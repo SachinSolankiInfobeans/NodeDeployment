@@ -26,8 +26,11 @@ jobs:
         username: ${{ secrets.EC2_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-          cd /home/node
-          git clone https://github.com/SachinSolankiInfobeans/NodeDeployment.git
-          git pull
+          sudo apt update
+          sudo apt install nodejs
+          sudo apt install npm
+    
+          cd /home/node/NodeDeployment
+          git pull origin main
           npm install
           # Add any additional deployment steps (e.g., restarting the Node.js app)
